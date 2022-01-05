@@ -16,7 +16,7 @@ class User(db.Model):
     def password(self):
         return self.password
 
-    @property.setter
+    @password.setter
     def passoword(self, plain_text_password):
         self.password = bcrypt(plain_text_password).decode('utf-8')
 
