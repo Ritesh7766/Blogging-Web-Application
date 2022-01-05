@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  home
+{% endblock %}
+
+{% block content %}
+  {% for post in posts %}
+    <article>
+      <div>
+        <div class="article-metadata">
+          <h2><a href="#">{{ post.title }}</a></h2>
+          <p style="color: #365363;">Posted by <strong><a href="#">{{ post.author }}</a></strong> on <small>{{ post.date_posted }}</small></p>
+        </div>
+        <p>{{ post.content }}</p>
+      </div>
+    </article>
+  {% endfor %}
+{% endblock %}

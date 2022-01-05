@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  register
+{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" href="../static/form-content.css">
+{% endblock %}
+
+{% block content %}
+  <div class="form-content">
+    <form method="POST">
+      {{ form.hidden_tag() }}
+      <fieldset class="outline">
+        <legend>Join today</legend>
+        <div class="form-item">
+          {{ form.username.label() }}
+          <br>
+          {% if form.username.errors %}
+            {{ form.username(autocomplete="off", class="invalid") }}
+            <div class="feedback">
+              {% for error in form.username.errors %}
+                <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+          {% else %}
+            {{ form.username(autocomplete="off") }}  
+          {% endif %}
+        </div>
+
+        <div class="form-item">
+          {{ form.email.label() }}
+          <br>
+          {% if form.email.errors %}
+            {{ form.email(autocomplete="off", class="invalid") }}
+            <div class="feedback">
+              {% for error in form.email.errors %}
+                <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+          {% else %}
+            {{ form.email(autocomplete="off") }}  
+          {% endif %}
+        </div>
+
+        <div class="form-item">
+          {{ form.password.label() }}
+          <br>
+          {% if form.password.errors %}
+            {{ form.password(autocomplete="off", class="invalid") }}
+            <div class="feedback">
+              {% for error in form.password.errors %}
+                <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+          {% else %}
+            {{ form.password(autocomplete="off") }}  
+          {% endif %}
+        </div>
+
+        <div class="form-item">
+          {{ form.confirm_password.label() }}
+          <br>
+          {% if form.confirm_password.errors %}
+            {{ form.confirm_password(autocomplete="off", class="invalid") }}
+            <div class="feedback">
+              {% for error in form.confirm_password.errors %}
+                <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+          {% else %}
+            {{ form.confirm_password(autocomplete="off") }}  
+          {% endif %}
+        </div>
+        <br>
+        <div class="form-item">
+          {{ form.submit(id="submit") }}
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  <div class="anchor">
+    <small> 
+      Already have an account? <a href="{{ url_for('login') }}"><button>Log in</button></a>
+    </small>
+  </div>
+{% endblock %}

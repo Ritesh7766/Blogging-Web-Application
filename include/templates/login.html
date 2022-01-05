@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  login
+{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" href="../static/form-content.css">
+{% endblock %}
+
+{% block content %}
+  <div class="form-content">
+    <form method="POST">
+      {{ form.hidden_tag() }}
+      <fieldset class="outline">
+        <legend>Expanded and Enhanced Log in</legend>
+        <div class="form-item">
+          {{ form.email.label() }}
+          <br>
+          {% if form.email.errors %}
+            {{ form.email(autocomplete="off", class="invalid") }}
+            <div class="feedback">
+              {% for error in form.username.errors %}
+                <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+          {% else %}
+            {{ form.email(autocomplete="off") }}  
+          {% endif %}
+        </div>
+        <div class="form-item">
+          {{ form.password.label() }}
+          <br>
+          {% if form.password.errors %}
+            {{ form.password(autocomplete="off", class="invalid") }}
+            <div class="feedback">
+              {% for error in form.password.errors %}
+                <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+          {% else %}
+            {{ form.password(autocomplete="off") }}  
+          {% endif %}
+        </div>
+        <div class="form-item">
+          {{ form.remember_me.label() }}
+          {{ form.remember_me(class="checkbox") }}
+        </div>
+        <br>
+        <div class="form-item">
+          {{ form.submit(id="submit") }}
+        </div>
+      </fieldset>
+      <small class="general-text">
+        <a href="#">Forgot password?</a>
+      </small>
+    </form>
+  </div>
+  <div class="anchor">
+    <small> 
+      Donot have an account? <a href="{{ url_for('register') }}"><button>Sign Up</button></a>
+    </small>
+  </div>
+{% endblock %}

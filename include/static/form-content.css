@@ -1,0 +1,67 @@
+.form-content {
+    background-color: white;
+    padding-right: 20px;
+    color: #365363;
+}
+
+.form-item {
+    padding: 20px;
+}
+
+fieldset {
+    border-color: white;
+    border-style: solid;
+}
+
+legend {
+    text-align: center;
+    color: #365363;
+}
+
+.form-item input {
+    width: 100%;
+    padding: 10px;
+    background-color: #fafafa;
+    border: 1px solid #cec3c3;
+}
+
+#submit {
+    width: 100px;
+    color: rgb(56, 132, 214);
+    border-color: rgb(56, 132, 214);
+    background-color: rgb(204, 225, 247);
+}
+
+#submit:hover {
+    color: #fafafa;
+    background-color: rgb(56, 132, 214);
+    transition-duration: 0.5s;
+}
+
+.anchor {
+    padding-top: 5px;
+    padding-left: 20px;
+    color: #365363;
+}
+
+.anchor button {
+    padding-left: 10px;
+    margin-left: 5px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: rgb(56, 132, 214);
+    border: 1px solid rgb(56, 132, 214);
+    background-color: rgb(204, 225, 247);
+}
+
+.anchor button:hover {
+    color: #fafafa;
+    background-color: rgb(56, 132, 214);
+    transition-duration: 0.5s;
+}
+
+.checkbox {
+    width: 30px !important;
+    margin-left: 20px;
+}

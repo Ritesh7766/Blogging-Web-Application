@@ -1,0 +1,126 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    background-color: #fafafa;
+}
+
+.navbar {
+    z-index: 5000;
+    position: fixed;
+    width: 100%;
+    background-color: #365363;
+}
+
+#logo {
+    display: inline-block;
+    font-size: large;
+    padding: 20px;
+    color: #fafafa;
+}
+
+#mobile-menu {
+    display: inline-block;
+}
+
+.collapse-menu {
+    display: inline-block;
+    width: 90%;
+}
+
+.collapse-menu ul {
+    display: inline-block;
+}
+
+.collapse-menu ul li {
+    display: inline-block;
+    list-style-type: none;
+    padding: 20px;
+}
+
+.collapse-menu ul li a {
+    text-decoration: none;
+    color: #c9bbbb;
+    font-size: 13px;
+}
+
+.right {
+    float: right;
+}
+
+.collapse-menu ul li a:hover {
+    color: #fafafa;
+    transition-duration: 0.5s;
+}
+
+.collapse-menu ul li a .active {
+    color: #fafafa;
+}
+
+.active {
+    color: #fafafa !important;
+}
+
+@media screen and (max-width: 1040px) {
+    .navbar {
+        display: grid;
+        height: 61px;
+    }
+
+    .navbar .collapse-menu {
+        opacity: 0;
+        border-top: 1px solid #304855;
+        display: grid;
+        width: 100%;
+        transform: translateY(-300px);
+    }
+
+    .navbar .collapse-menu li {
+        display: grid;
+        text-align: center;
+        border-bottom: 1px solid #304855;
+    }
+
+    #mobile-menu {
+        position: absolute;
+        padding: 8px;
+        right: 5%;
+        transform: translate(5%, 20%); 
+        cursor: pointer;
+    }
+
+    #mobile-menu .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        background: white;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .navbar-height {
+        height: 303px;
+        transition-duration: 0.5s;
+    }
+
+    .dropdown {
+        opacity: 1 !important;
+        transition: all 0.5s;
+        transform: translateY(0px) !important;
+    }
+
+    .is-active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .is-active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .is-active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
