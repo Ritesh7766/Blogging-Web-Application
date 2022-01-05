@@ -3,41 +3,6 @@ from flask import render_template, url_for, flash, redirect
 from include.forms import Register, Login
 
 posts = [
-    {
-        'title': 'This is a title. Please read it.',
-        'author': 'Ritesh Saha',
-        'date_posted': '01/01/1997',
-        'content': ''' This is a post. This is filler text dont read this shit. You are wasting your time
-        This is a post. This is filler text dont read this shit. You are wasting your time
-        This is a post. This is filler text dont read this shit. You are wasting your time
-        This is a post. This is filler text dont read this shit. You are wasting your time
-        This is a post. This is filler text dont read this shit. You are wasting your time
-        This is a post. This is filler text dont read this shit. You are wasting your time'''
-    },
-    {
-        'title': 'This is a title. Please read it.',
-        'author': 'Ritesh Saha',
-        'date_posted': '01/01/1997',
-        'content': 'This is a post. This is filler text dont read this shit. You are wasting your time'
-    },
-    {
-        'title': 'This is a title. Please read it.',
-        'author': 'Ritesh Saha',
-        'date_posted': '01/01/1997',
-        'content': 'This is a post. This is filler text dont read this shit. You are wasting your time'
-    },
-    {
-        'title': 'This is a title. Please read it.',
-        'author': 'Ritesh Saha',
-        'date_posted': '01/01/1997',
-        'content': 'This is a post. This is filler text dont read this shit. You are wasting your time'
-    },
-    {
-        'title': 'This is a title. Please read it.',
-        'author': 'Ritesh Saha',
-        'date_posted': '01/01/1997',
-        'content': 'This is a post. This is filler text dont read this shit. You are wasting your time'
-    }
 ]
 
 @app.route('/')
