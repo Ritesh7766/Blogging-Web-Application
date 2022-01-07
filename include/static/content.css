@@ -15,6 +15,7 @@
     border: 1px solid white;
     background-color: white;
     width: 50%;
+    border: 1px solid #f3f3f3;
 }
 
 .main-content {
@@ -67,5 +68,9 @@ article p {
 
     .main-content {
         width: 100%;
+    }
+
+    .sidebar {
+        width: fit-content;
     }
 }

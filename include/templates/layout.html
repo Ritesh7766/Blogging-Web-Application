@@ -29,10 +29,17 @@
           <a href="{{ url_for('about') }}">About</a>
       </ul>
       <ul  class="right">
-        <li><a href="{{ url_for('login') }}">Login</a>
-        </li><li>
-          <a href="{{ url_for('register') }}">Register</a>
-        </li>
+        {% if current_user.is_authenticated %}
+          <li><a href="{{ url_for('logout') }}">Logout</a>
+          </li><li>
+            <a href="{{ url_for('account') }}">Welcome {{ current_user.username }}</a>
+          </li>
+        {% else %}
+          <li><a href="{{ url_for('login') }}">Login</a>
+          </li><li>
+            <a href="{{ url_for('register') }}">Register</a>
+          </li>
+        {% endif %}
       </ul>
     </div>
   </nav>
@@ -71,6 +78,8 @@
     </div>
   </main>
 
+  {% block modals %}
+  {% endblock %}
   <script src="../static/dropdown.js"></script>
   <script src="../static/active.js"></script>
   <script src="../static/alert.js"></script>

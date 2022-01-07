@@ -28,7 +28,7 @@ legend {
 #submit {
     width: 100px;
     color: rgb(56, 132, 214);
-    border-color: rgb(56, 132, 214);
+    border: 1px solid rgb(56, 132, 214);
     background-color: rgb(204, 225, 247);
 }
 

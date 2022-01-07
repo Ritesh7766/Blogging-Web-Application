@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  account
+{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" href="../static/form-content.css">
+  <link rel="stylesheet" href="../static/account.css">
+{% endblock %}
+
+{% block content %}
+  <div class="dashboard">
+    <div class="media">
+      <img src="{{ img_file }}">
+      <div class="media-content">
+        <h2>{{ current_user.username }}</h2>
+        <p>{{ current_user.email }}</p>
+        <p id="status">This is a status</p>
+      </div>
+    </div>
+    <div id="options">
+      <button id="submit">Update Info</button>
+      <button id="submit">Change Password</button>
+      <button id="submit">New Post</button>
+    </div>
+  </div>
+{% endblock %}
+
+{% block modals %}
+<div class="modal-bg" id="update">
+  <div class="modal">
+    <div class="form-content">
+      <form method="POST">
+        <button class="close2">
+          <span class="icon2">&times;</span>
+        </button>
+        {{ update_form.hidden_tag() }}
+        <fieldset class="outline">
+          <legend>Update info</legend>
+          <div class="form-item">
+            {{ update_form.username.label() }}
+            <br>
+            {% if update_form.username.errors %}
+              {{ update_form.username(autocomplete="off", class="invalid") }}
+              <div class="feedback">
+                {% for error in update_form.username.errors %}
+                  <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ update_form.username(autocomplete="off") }}  
+            {% endif %}
+          </div>
+
+          <div class="form-item">
+            {{ update_form.email.label() }}
+            <br>
+            {% if update_form.email.errors %}
+              {{ update_form.email(autocomplete="off", class="invalid") }}
+              <div class="feedback">
+                {% for error in update_form.email.errors %}
+                  <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ update_form.email(autocomplete="off") }}  
+            {% endif %}
+          </div>
+
+          <br>
+          <div class="form-item">
+            {{ update_form.submit(id="submit") }}
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="../static/options.js"></script>
+{% endblock %}

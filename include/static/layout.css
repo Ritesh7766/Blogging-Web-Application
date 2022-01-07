@@ -64,7 +64,7 @@ body {
     color: #fafafa !important;
 }
 
-@media screen and (max-width: 1040px) {
+@media screen and (max-width: 1060px) {
     .navbar {
         display: grid;
         height: 61px;
