@@ -4,6 +4,10 @@ options[0].addEventListener('click', function() {
     document.getElementById('update').classList.toggle('activate')
 });
 
+options[1].addEventListener('click', function() {
+    document.getElementById('password').classList.toggle('activate')
+});
+
 Array.from(document.getElementsByClassName('modal-bg')).forEach(element => {
     element.getElementsByClassName('close2')[0].addEventListener('click', function() {
         element.classList.toggle('activate');

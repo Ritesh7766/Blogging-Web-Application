@@ -9,8 +9,9 @@
     <article>
       <div>
         <div class="article-metadata">
-          <h2><a href="#">{{ post.title }}</a></h2>
-          <p style="color: #365363;">Posted by <strong><a href="#">{{ post.author }}</a></strong> on <small>{{ post.date_posted }}</small></p>
+          <img src="{{ url_for('static', filename='/profilepics/' + post.author.image_file) }}">
+          <h2><a href="{{ url_for('get_post', post_id=post.id) }}">{{ post.title }}</a></h2>
+          <p style="color: #365363;">Posted by <strong><a href="#">{{ post.author.username }}</a></strong> on <small>{{ post.date_posted.strftime('%Y-%m-%d') }}</small></p>
         </div>
         <p>{{ post.content }}</p>
       </div>

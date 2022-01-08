@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  post
+{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='form-content.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="form-content">
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    <fieldset class="outline">
+      <legend>{{ Legend }}</legend>
+      <div class="form-item">
+        {{ form.title.label() }}
+        <br>
+        {% if form.title.errors %}
+          {{ form.title(autocomplete="off", class="invalid") }}
+          <div class="feedback">
+            {% for error in form.title.errors %}
+              <span>{{ error }}</span>
+            {% endfor %}
+          </div>
+        {% else %}
+          {{ form.title(autocomplete="off") }}  
+        {% endif %}
+      </div>
+      <div class="form-item">
+        {{ form.content.label() }}
+        <br>
+        {% if form.content.errors %}
+          {{ form.content(autocomplete="off", class="invalid") }}
+          <div class="feedback">
+            {% for error in form.content.errors %}
+              <span>{{ error }}</span>
+            {% endfor %}
+          </div>
+        {% else %}
+          {{ form.content(autocomplete="off") }}  
+        {% endif %}
+      </div>
+      <br>
+      <div class="form-item">
+        {{ form.submit(id="submit") }}
+      </div>
+    </fieldset>
+  </form>
+</div>
+{% endblock %}

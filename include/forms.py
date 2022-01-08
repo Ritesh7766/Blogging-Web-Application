@@ -1,8 +1,10 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from flask_wtf.file import FileField, FileAllowed
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from include.models import User
 from flask_login import current_user
+
 
 class Register(FlaskForm):
     username = StringField(label = 'Username', validators=[DataRequired(), Length(min=5, max=40)])
@@ -25,6 +27,7 @@ class Register(FlaskForm):
         if username:
             raise ValidationError('Username taken')
 
+
 class Login(FlaskForm):
     email = StringField(label = 'Email')
     password  = PasswordField(label = 'Password')
@@ -34,7 +37,8 @@ class Login(FlaskForm):
 class UpdateAccount(FlaskForm):
     username = StringField(label = 'Username', validators=[DataRequired(), Length(min=5, max=40)])
     email = StringField(label = 'Email', validators=[DataRequired(), Email()])
-    submit = SubmitField(label = 'Update')
+    picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png'])])
+    submit1 = SubmitField(label = 'Update')
     
     def validate_email(self, attempted_email):
         if current_user.email != attempted_email.data:
@@ -47,3 +51,24 @@ class UpdateAccount(FlaskForm):
             username = User.query.filter_by(username = attempted_username.data).first()
             if username:
                 raise ValidationError('Username taken')
+
+
+class UpdatePassword(FlaskForm):
+    current_password  = PasswordField(label = 'Current Password')
+    new_password = PasswordField(label = 'New Password', validators=[DataRequired(), Length(min=6)])
+    confirm_password = PasswordField(label = 'Confirm Password', validators=[DataRequired(), EqualTo('new_password')])
+    submit2 = SubmitField(label = 'Update')
+
+    def validate_current_password(self, attempted_password):
+        if not current_user.check_password(attempted_password.data):
+            raise ValidationError('Incorrect Password!')
+
+    def validate_new_password(self, password):
+        if len(password.data) < 10:
+            raise ValidationError('Password should be at least 10 characters long') 
+
+
+class NewPost(FlaskForm):
+    title = StringField(label = 'Title', validators=[DataRequired()])
+    content = TextAreaField(label = 'Content', validators=[DataRequired()])
+    submit = SubmitField(label = 'Post')

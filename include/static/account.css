@@ -17,8 +17,19 @@
     display: flex;
 }
 
+.media a {
+    text-decoration: none;
+    color: #1c2d37;
+}
+
+.media img {
+    width: 125px;
+    height: 125px;
+}
+
 #options button {
     width: fit-content !important;
+    margin: 5px;
 }
 
 .icon2 {

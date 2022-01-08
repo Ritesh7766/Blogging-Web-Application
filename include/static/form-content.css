@@ -8,6 +8,12 @@
     padding: 20px;
 }
 
+.form-item textarea {
+    resize: none;
+    width: 100%;
+    height: 300px;
+}
+
 fieldset {
     border-color: white;
     border-style: solid;

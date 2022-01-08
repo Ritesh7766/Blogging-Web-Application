@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  home
+{% endblock %}
+
+{% block content %}
+  <article>
+    <div>
+      <div class="article-metadata">
+        <img src="{{ url_for('static', filename='/profilepics/' + post.author.image_file) }}">
+        <h2 style="color: #365363;">{{ post.title }}</h2>
+        <p style="color: #365363;">Posted by <strong><a href="#">{{ post.author.username }}</a></strong> on <small>{{ post.date_posted.strftime('%Y-%m-%d') }}</small></p>
+      </div>
+      <p>{{ post.content }}</p>
+    </div>
+  </article>
+{% endblock %}

@@ -5,8 +5,8 @@
 {% endblock %}
 
 {% block head %}
-  <link rel="stylesheet" href="../static/form-content.css">
-  <link rel="stylesheet" href="../static/account.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='form-content.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='account.css') }}">
 {% endblock %}
 
 {% block content %}
@@ -16,22 +16,22 @@
       <div class="media-content">
         <h2>{{ current_user.username }}</h2>
         <p>{{ current_user.email }}</p>
-        <p id="status">This is a status</p>
+        <a href="{{ url_for('post') }}"><button id="submit">New Post</button></a>
       </div>
     </div>
     <div id="options">
       <button id="submit">Update Info</button>
       <button id="submit">Change Password</button>
-      <button id="submit">New Post</button>
     </div>
   </div>
 {% endblock %}
 
 {% block modals %}
+<!-- Update Account info -->
 <div class="modal-bg" id="update">
   <div class="modal">
     <div class="form-content">
-      <form method="POST">
+      <form method="POST" enctype="multipart/form-data">
         <button class="close2">
           <span class="icon2">&times;</span>
         </button>
@@ -68,14 +68,93 @@
             {% endif %}
           </div>
 
+          <div class="form-item">
+            {{ update_form.picture.label() }}
+            {{ update_form.picture }}
+            {% if update_form.picture.errors %}
+              <div class="feedback">
+                {% for error in update_form.picture.errors %}
+                  <span>{{ error }}</span>
+                  <br>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+
           <br>
           <div class="form-item">
-            {{ update_form.submit(id="submit") }}
+            {{ update_form.submit1(id="submit") }}
           </div>
         </fieldset>
       </form>
     </div>
   </div>
 </div>
-<script src="../static/options.js"></script>
+
+<!-- Update Password -->
+<div class="modal-bg" id="password">
+  <div class="modal">
+    <div class="form-content">
+      <form method="POST" enctype="multipart/form-data">
+        <button class="close2">
+          <span class="icon2">&times;</span>
+        </button>
+        {{ pswd_form.hidden_tag() }}
+        <fieldset class="outline">
+          <legend>Change Password</legend>
+          <div class="form-item">
+            {{ pswd_form.current_password.label() }}
+            <br>
+            {% if pswd_form.current_password.errors %}
+              {{ pswd_form.current_password(autocomplete="off", class="invalid") }}
+              <div class="feedback">
+                {% for error in pswd_form.current_password.errors %}
+                  <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ pswd_form.current_password(autocomplete="off") }}  
+            {% endif %}
+          </div>
+
+          <div class="form-item">
+            {{ pswd_form.new_password.label() }}
+            <br>
+            {% if pswd_form.new_password.errors %}
+              {{ pswd_form.new_password(autocomplete="off", class="invalid") }}
+              <div class="feedback">
+                {% for error in pswd_form.new_password.errors %}
+                  <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ pswd_form.new_password(autocomplete="off") }}  
+            {% endif %}
+          </div>
+
+          <div class="form-item">
+            {{ pswd_form.confirm_password.label() }}
+            <br>
+            {% if pswd_form.confirm_password.errors %}
+              {{ pswd_form.confirm_password(autocomplete="off", class="invalid") }}
+              <div class="feedback">
+                {% for error in pswd_form.confirm_password.errors %}
+                  <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ pswd_form.confirm_password(autocomplete="off") }}  
+            {% endif %}
+          </div>
+
+          <br>
+          <div class="form-item">
+            {{ pswd_form.submit2(id="submit") }}
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="{{ url_for('static', filename='options.js') }}"></script>
 {% endblock %}

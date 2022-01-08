@@ -11,7 +11,7 @@ class User(db.Model, UserMixin):
     posts = db.relationship('Post', backref = 'author', lazy = True)
 
     def __repr__(self):
-        return f'{self.username}, {self.image_file}, {self.email}'
+        return f'{self.username}'
 
     @property
     def password(self):

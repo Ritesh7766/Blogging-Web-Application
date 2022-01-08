@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block head %}
-  <link rel="stylesheet" href="../static/form-content.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='form-content.css') }}">
 {% endblock %}
 
 {% block content %}
@@ -20,7 +20,7 @@
           {% if form.email.errors %}
             {{ form.email(autocomplete="off", class="invalid") }}
             <div class="feedback">
-              {% for error in form.username.errors %}
+              {% for error in form.email.errors %}
                 <span>{{ error }}</span>
               {% endfor %}
             </div>

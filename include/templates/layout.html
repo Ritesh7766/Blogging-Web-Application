@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}{% endblock %}</title>
 
-  <link rel="stylesheet" href="../static/layout.css">
-  <link rel="stylesheet" href="../static/content.css">
-  <link rel="stylesheet" href="../static/flash.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='layout.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='content.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='flash.css') }}">
 
   {% block head %}
   {% endblock %}
@@ -80,8 +80,8 @@
 
   {% block modals %}
   {% endblock %}
-  <script src="../static/dropdown.js"></script>
-  <script src="../static/active.js"></script>
-  <script src="../static/alert.js"></script>
+  <script src="{{ url_for('static', filename='dropdown.js') }}"></script>
+  <script src="{{ url_for('static', filename='active.js') }}"></script>
+  <script src="{{ url_for('static', filename='alert.js') }}"></script>
 </body>
 </html>
