@@ -72,3 +72,23 @@ class NewPost(FlaskForm):
     title = StringField(label = 'Title', validators=[DataRequired()])
     content = TextAreaField(label = 'Content', validators=[DataRequired()])
     submit = SubmitField(label = 'Post')
+
+
+class RequestResetForm(FlaskForm):
+    email = StringField(label = 'Email', validators=[DataRequired(), Email()])
+    submit = SubmitField(label = 'Request Reset')
+
+    def validate_username(self, email):
+        username = User.query.filter_by(email = email.data).first()
+        if username is None:
+            raise ValidationError('User with this email does not exists!')
+
+
+class ResetPasswordForm(FlaskForm):
+    password = PasswordField(label = 'Password', validators=[DataRequired(), Length(min=6)])
+    confirm_password = PasswordField(label = 'Confirm Password', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField(label = 'Reset Password')
+
+    def validate_new_password(self, password):
+        if len(password.data) < 10:
+            raise ValidationError('Password should be at least 10 characters long') 

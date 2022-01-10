@@ -9,6 +9,7 @@
 }
 
 .form-item textarea {
+    white-space: pre-wrap;
     resize: none;
     width: 100%;
     height: 300px;

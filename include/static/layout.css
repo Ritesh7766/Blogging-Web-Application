@@ -4,6 +4,10 @@
     font-family: 'Courier New', Courier, monospace;
 }
 
+p {
+    white-space: pre-wrap;
+}
+
 body {
     background-color: #fafafa;
 }
