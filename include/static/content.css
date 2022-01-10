@@ -68,6 +68,42 @@ article p {
     padding: 10px;
 }
 
+.danger-btn {
+    padding: 6px;
+    background-color: #ffd3d3;
+    color: #c73636;
+    border: 1px solid #c73636;
+}
+
+.danger-btn:hover {
+    color: white;
+    background-color: #eb8f8f;
+}
+
+.info-btn {
+    padding: 6px;
+    background-color: #e1dfff;
+    color: #6666ff;
+    border: 1px solid #6666ff;
+}
+
+.info-btn:hover {
+    color: white;
+    background-color: #a2a2ff;
+}
+
+.page {
+    padding: 5px;
+    background-color: #e1dfff;
+    color: #6666ff;
+    border: 1px solid #6666ff;
+}
+
+.page:hover {
+    color: white;
+    background-color: #a2a2ff;
+}
+
 @media screen and (max-width: 860px) {
     .row {
         display: block;

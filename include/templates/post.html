@@ -39,7 +39,7 @@
             {% endfor %}
           </div>
         {% else %}
-          {{ form.content(autocomplete="off") }}  
+          {{ form.content(autocomplete="off", class="textarea") }}  
         {% endif %}
       </div>
       <br>
@@ -49,4 +49,8 @@
     </fieldset>
   </form>
 </div>
+{% endblock %}
+
+{% block modals %}
+<script src="{{ url_for('static', filename='textarea.js') }}"></script>
 {% endblock %}
