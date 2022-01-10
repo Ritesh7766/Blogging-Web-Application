@@ -24,20 +24,20 @@
     </div>
     <div class="collapse-menu">
       <ul class="left">
-        <li><a href="{{ url_for('index') }}">Home</a>
+        <li><a href="{{ url_for('main.index') }}">Home</a>
         </li><li>
-          <a href="{{ url_for('about') }}">About</a>
+          <a href="{{ url_for('main.about') }}">About</a>
       </ul>
       <ul  class="right">
         {% if current_user.is_authenticated %}
-          <li><a href="{{ url_for('logout') }}">Logout</a>
+          <li><a href="{{ url_for('users.logout') }}">Logout</a>
           </li><li>
-            <a href="{{ url_for('account') }}">Welcome {{ current_user.username }}</a>
+            <a href="{{ url_for('users.account') }}">Welcome {{ current_user.username }}</a>
           </li>
         {% else %}
-          <li><a href="{{ url_for('login') }}">Login</a>
+          <li><a href="{{ url_for('users.login') }}">Login</a>
           </li><li>
-            <a href="{{ url_for('register') }}">Register</a>
+            <a href="{{ url_for('users.register') }}">Register</a>
           </li>
         {% endif %}
       </ul>

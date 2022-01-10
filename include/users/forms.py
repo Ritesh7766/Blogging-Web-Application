@@ -1,9 +1,9 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
+from wtforms import StringField, SubmitField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
-from include.models import User
 from flask_login import current_user
+from include.models import  User
 
 
 class Register(FlaskForm):
@@ -33,6 +33,7 @@ class Login(FlaskForm):
     password  = PasswordField(label = 'Password')
     submit = SubmitField(label = 'Log In')
     remember_me = BooleanField('Remember Me')
+
 
 class UpdateAccount(FlaskForm):
     username = StringField(label = 'Username', validators=[DataRequired(), Length(min=5, max=40)])
@@ -66,12 +67,6 @@ class UpdatePassword(FlaskForm):
     def validate_new_password(self, password):
         if len(password.data) < 10:
             raise ValidationError('Password should be at least 10 characters long') 
-
-
-class NewPost(FlaskForm):
-    title = StringField(label = 'Title', validators=[DataRequired()])
-    content = TextAreaField(label = 'Content', validators=[DataRequired()])
-    submit = SubmitField(label = 'Post')
 
 
 class RequestResetForm(FlaskForm):

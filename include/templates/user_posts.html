@@ -11,8 +11,8 @@
       <div>
         <div class="article-metadata">
           <img src="{{ url_for('static', filename='/profilepics/' + post.author.image_file) }}">
-          <h2><a href="{{ url_for('get_post', post_id=post.id) }}">{{ post.title }}</a></h2>
-          <p style="color: #365363;">Posted by <strong><a href="{{ url_for('user_posts', username=post.author.username) }}">{{ post.author.username }}</a></strong> on <small>{{ post.date_posted.strftime('%Y-%m-%d') }}</small></p>
+          <h2><a href="{{ url_for('posts.get_post', post_id=post.id) }}">{{ post.title }}</a></h2>
+          <p style="color: #365363;">Posted by <strong><a href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a></strong> on <small>{{ post.date_posted.strftime('%Y-%m-%d') }}</small></p>
         </div>
         <p>{{ post.content }}</p>
       </div>
@@ -22,9 +22,9 @@
   {% for page_num in posts.iter_pages() %}
     {% if page_num %}
       {% if posts.page == page_num %}
-        <a href="{{ url_for('user_posts', username=user.username, page=page_num) }}"><button style="background-color: #a2a2ff;" class="page">{{ page_num }}<button></a>
+        <a href="{{ url_for('users.user_posts', username=user.username, page=page_num) }}"><button style="background-color: #a2a2ff;" class="page">{{ page_num }}<button></a>
       {% else %}
-        <a href="{{ url_for('user_posts', username=user.username, page=page_num) }}"><button class="page">{{ page_num }}<button></a> 
+        <a href="{{ url_for('users.user_posts', username=user.username, page=page_num) }}"><button class="page">{{ page_num }}<button></a> 
       {% endif %}
     {% else %}
       ...
