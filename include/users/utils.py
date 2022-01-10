@@ -19,12 +19,12 @@ If you did not make this request then simply ignore this email and no changes wi
     mail.send(msg)
 
 def save_picture(profile_pic):
-    if current_user.image_file != 'default.jpg':
-        os.remove(current_app.root_path + '\static\profilepics\\' + current_user.image_file)
+    if current_user.image_file != 'default.jpg': 
+        os.remove(current_app.root_path + '/static/profilepics/' + current_user.image_file)
     random_hex = secrets.token_hex(16)
     _, f_ext = os.path.splitext(profile_pic.filename)
-    picture_fn = random_hex + f_ext
-    picture_path = os.path.join(current_app.root_path + '\static\profilepics\\' + picture_fn) 
+    picture_fn = random_hex + f_ext                      #\static\profilepics\\
+    picture_path = os.path.join(current_app.root_path + '/static/profilepics/' + picture_fn) 
     img = Image.open(profile_pic)
     img.thumbnail((125, 125))
     img.save(picture_path)
