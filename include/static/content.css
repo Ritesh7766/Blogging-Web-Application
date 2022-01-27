@@ -60,6 +60,7 @@ article p {
     padding-top: 5px;
     font-size: 15px;
     color: #333;
+	overflow: auto;
 }
 
 .sidebar * {
